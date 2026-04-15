@@ -1,8 +1,11 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from openai import OpenAI
 
 app = Flask(__name__)
+CORS(app)
+
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 CONNECTOR_KEY = os.environ.get("CONNECTOR_API_KEY")
 DEFAULT_MODEL = os.environ.get("OPENAI_MODEL", "gpt-4.1-mini")
